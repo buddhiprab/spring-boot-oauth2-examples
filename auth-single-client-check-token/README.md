@@ -1,16 +1,20 @@
 #### request:
 ```
-POST /oauth/token?grant_type=client_credentials HTTP/1.1
+POST /oauth/check_token?token=845f8697-f024-4801-8f5f-a99fdf8010b3 HTTP/1.1
 Host: localhost:8100
-Authorization: Basic YTph
 ```
 
 #### reseponse:
 ```
 {
-    "access_token": "b794b3b1-b6ff-49a3-a7e2-eb554fd560e8",
-    "token_type": "bearer",
-    "expires_in": 43198,
-    "scope": "all"
+    "scope": [
+        "all"
+    ],
+    "active": true,
+    "exp": 1569619317,
+    "authorities": [
+        "ROLE_A"
+    ],
+    "client_id": "a"
 }
 ```
