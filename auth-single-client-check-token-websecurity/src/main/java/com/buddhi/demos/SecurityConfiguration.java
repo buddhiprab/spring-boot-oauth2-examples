@@ -14,6 +14,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 //        http.anonymous().disable();
-        http.authorizeRequests().antMatchers("**/oauth/check_token").denyAll();
+        http.authorizeRequests().antMatchers("**/check_token").denyAll();
     }
 }

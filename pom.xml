@@ -41,7 +41,9 @@
 
 	<modules>
 		<module>auth-single-client-get-access-token</module>
+		<module>auth-single-client-get-access-token-websecurity</module>
 		<module>auth-single-client-check-token</module>
+		<module>auth-single-client-check-token-websecurity</module>
 	</modules>
 
 	<build>
