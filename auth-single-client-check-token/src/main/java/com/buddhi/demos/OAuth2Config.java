@@ -36,8 +36,9 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 //		security.checkTokenAccess("denyAll()");//request: oauth/check_token response: {"timestamp":"2019-09-30T01:46:55.801+0000","status":403,"error":"Forbidden","message":"Forbidden","path":"/oauth/check_token"}
 //		security.checkTokenAccess("permitAll()");//request: oauth/check_token response: {"scope":["all"],"active":true,"exp":1569851327,"authorities":["ROLE_A","ROLE_B"],"client_id":"a"}, can get token details with or without authentication
+		security.checkTokenAccess("isAuthenticated()");//any user can access oauth/check_token
 //		security.checkTokenAccess("isAnonymous()");//without any authentication can request oauth/check_token
-		security.checkTokenAccess("hasAuthority('ROLE_TRUSTED_CLIENT')");//the user need to have ROLE_TRUSTED_CLIENT authority to request oauth/check_token ex. user only user "a" can request, user "b" doesn't has this authority
+//		security.checkTokenAccess("hasAuthority('ROLE_TRUSTED_CLIENT')");//the user need to have ROLE_TRUSTED_CLIENT authority to request oauth/check_token ex. user only user "a" can request, user "b" doesn't has this authority
 //		security.checkTokenAccess("hasAuthority('ROLE_B')");//both user "a" and "b" can access
 //		security.tokenKeyAccess("isAnonymous() || hasAuthority('ROLE_TRUSTED_CLIENT')");
 	}
