@@ -23,14 +23,12 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 				.authorities("ROLE_A")
 				.scopes("all")
 				.authorizedGrantTypes("client_credentials")
-				.autoApprove(true)
 				.and()
 				.withClient("b")
 				.secret(passwordEncoder().encode("b"))
 				.authorities("ROLE_B")
 				.scopes("all")
-				.authorizedGrantTypes("client_credentials")
-				.autoApprove(true);
+				.authorizedGrantTypes("client_credentials");
 	}
 
 	@Bean

@@ -21,22 +21,25 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 				.inMemory()
 				.withClient("a")
 				.secret(passwordEncoder().encode("a"))
-				.authorities("ROLE_A")
+				.authorities("ROLE_A","ROLE_B")
 				.scopes("all")
 				.authorizedGrantTypes("client_credentials")
-				.autoApprove(true)
 				.and()
 				.withClient("b")
 				.secret(passwordEncoder().encode("b"))
 				.authorities("ROLE_B")
 				.scopes("all")
-				.authorizedGrantTypes("client_credentials")
-				.autoApprove(true);
+				.authorizedGrantTypes("client_credentials");
 	}
 
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-		security.checkTokenAccess("permitAll()");
+//		security.checkTokenAccess("denyAll()");//request: oauth/check_token response: {"timestamp":"2019-09-30T01:46:55.801+0000","status":403,"error":"Forbidden","message":"Forbidden","path":"/oauth/check_token"}
+		security.checkTokenAccess("permitAll()");//request: oauth/check_token response: {"scope":["all"],"active":true,"exp":1569851327,"authorities":["ROLE_A","ROLE_B"],"client_id":"a"}
+//		security.checkTokenAccess("isAnonymous()");
+//		security.checkTokenAccess("hasAuthority('ROLE_TRUSTED_CLIENT')");
+//		security.checkTokenAccess("hasAuthority('ROLE_B')");
+//		security.tokenKeyAccess("isAnonymous() || hasAuthority('ROLE_TRUSTED_CLIENT')");
 	}
 
 	@Bean

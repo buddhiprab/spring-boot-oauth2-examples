@@ -4,6 +4,7 @@ POST /oauth/token?grant_type=client_credentials HTTP/1.1
 Host: localhost:8100
 Authorization: Basic YTph
 ```
+using postman Authorization as Basic Auth and username as "a" and password as "a"
 
 #### reseponse:
 ```
