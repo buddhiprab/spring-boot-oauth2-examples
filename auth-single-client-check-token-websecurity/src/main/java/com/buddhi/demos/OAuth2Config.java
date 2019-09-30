@@ -21,22 +21,20 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 				.inMemory()
 				.withClient("a")
 				.secret(passwordEncoder().encode("a"))
-				.authorities("ROLE_A")
+				.authorities("ROLE_A","ROLE_B","ROLE_TRUSTED_CLIENT")
 				.scopes("all")
 				.authorizedGrantTypes("client_credentials")
-				.autoApprove(true)
 				.and()
 				.withClient("b")
 				.secret(passwordEncoder().encode("b"))
 				.authorities("ROLE_B")
 				.scopes("all")
-				.authorizedGrantTypes("client_credentials")
-				.autoApprove(true);
+				.authorizedGrantTypes("client_credentials");
 	}
 
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-		security.checkTokenAccess("denyAll()");
+		security.checkTokenAccess("permitAll()");
 	}
 
 	@Bean
