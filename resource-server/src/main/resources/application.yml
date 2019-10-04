@@ -1,0 +1,10 @@
+server:
+  port: ${PORT:2222}
+
+spring:
+  application:
+    name: resource-server
+
+logging:
+  level:
+    org.springframework.security: TRACE

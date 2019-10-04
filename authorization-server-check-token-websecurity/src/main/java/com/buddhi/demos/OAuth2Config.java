@@ -34,7 +34,8 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-		security.checkTokenAccess("permitAll()");
+//		security.checkTokenAccess("permitAll()");
+		security.checkTokenAccess("hasAuthority('ROLE_C')");
 	}
 
 	@Bean
